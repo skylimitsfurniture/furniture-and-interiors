@@ -1,4 +1,5 @@
 import ProductArt from "@/components/ProductArt";
+import VideoBanner from "@/components/VideoBanner";
 import { products, formatINR } from "@/lib/products";
 
 export default function Home() {
@@ -6,58 +7,52 @@ export default function Home() {
 
   return (
     <main>
-      {/* Hero */}
-      <section className="max-w-content mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-20 grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <p className="text-sm text-timber mb-5">Made in India</p>
-          <h1 className="font-display text-5xl md:text-6xl leading-[1.05] text-ink">
-            Furniture for rooms that finally feel finished.
-          </h1>
-          <p className="mt-6 text-ink/70 max-w-md leading-relaxed">
-            Every piece in the Skylimits catalog is built from solid timber
-            frames and finished by hand in our Vizag workshop, then shipped
-            straight to your door.
-          </p>
-          <div className="mt-9 flex gap-4">
-            <a
-              href="/products"
-              className="px-6 py-3 rounded-full bg-ink text-paper hover:bg-timberdark transition-colors"
-            >
-              Browse the catalog
-            </a>
-            <a
-              href="#story"
-              className="px-6 py-3 rounded-full border border-ink/20 text-ink hover:border-ink/50 transition-colors"
-            >
-              Our story
-            </a>
+      {/* Hero — dual promo banners */}
+      <section className="max-w-content mx-auto px-4 md:px-10 pt-6 pb-16 grid md:grid-cols-2 gap-4">
+        <VideoBanner
+          videoUrl={process.env.NEXT_PUBLIC_GANESH_VIDEO_URL || "/videos/ganesh-chaturthi.mp4"}
+          posterUrl={process.env.NEXT_PUBLIC_GANESH_VIDEO_POSTER}
+        />
+
+        {/* Banner 2: New arrivals */}
+        <a
+          href="/products"
+          className="group relative rounded-2xl overflow-hidden bg-plum text-paper min-h-[380px] flex flex-col justify-between p-8 md:p-10"
+        >
+          <ProductArt tone="sage" className="absolute right-[-20px] top-[-20px] w-56 h-56 opacity-25 pointer-events-none" />
+          <div>
+            <span className="inline-block bg-paper text-plum text-xs font-semibold px-3 py-1 rounded-full">
+              New arrivals
+            </span>
+            <h1 className="font-display text-4xl md:text-5xl leading-[1.05] mt-5">
+              Bedrooms, <br /> reimagined
+            </h1>
           </div>
-        </div>
-        <div className="relative">
-          <div className="rounded-[2rem] overflow-hidden bg-cloud grain aspect-[4/5] md:aspect-square">
-            <ProductArt tone="timber" className="w-full h-full" />
+          <div className="flex items-end justify-between">
+            <p className="text-paper/85 text-sm max-w-[220px]">
+              The Hollow collection just landed — minimalist frames in deep
+              ink and walnut.
+            </p>
+            <span className="shrink-0 px-5 py-2.5 rounded-full bg-paper text-plum text-sm font-semibold group-hover:bg-cloud transition-colors">
+              Explore
+            </span>
           </div>
-          <div className="absolute -bottom-6 -left-6 bg-paper border border-ink/10 rounded-2xl px-5 py-4 shadow-sm hidden sm:block">
-            <p className="font-display text-2xl text-ink">1,200+</p>
-            <p className="text-xs text-ink/60">Homes furnished so far</p>
-          </div>
-        </div>
+        </a>
       </section>
 
-      {/* Category strip */}
-      <section className="max-w-content mx-auto px-6 md:px-10">
-        <div className="rule" />
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-ink/10 my-px">
-          {["Living Room", "Bedroom", "Dining", "Office"].map((cat) => (
-            <a
-              key={cat}
-              href="/products"
-              className="bg-paper py-8 text-center group hover:bg-cloud/60 transition-colors"
-            >
-              <span className="font-display text-lg text-ink group-hover:text-timberdark">
-                {cat}
-              </span>
-            </a>
+      {/* Trust strip */}
+      <section className="max-w-content mx-auto px-4 md:px-10 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+          {[
+            ["Free Shipping", "On every order, pan-India"],
+            ["1,200+", "Homes furnished so far"],
+            ["Solid Timber", "No flat-pack shortcuts"],
+            ["7-Day Returns", "No questions asked"],
+          ].map(([title, sub]) => (
+            <div key={title} className="rounded-xl bg-cloud/60 px-3 py-5">
+              <p className="font-display text-lg text-ink">{title}</p>
+              <p className="text-xs text-ink/60 mt-1">{sub}</p>
+            </div>
           ))}
         </div>
       </section>
@@ -71,17 +66,27 @@ export default function Home() {
           </a>
         </div>
         <div className="grid md:grid-cols-3 gap-8">
-          {featured.map((p) => (
-            <a key={p.id} href={`/products/${p.id}`} className="group block">
-              <div className="rounded-2xl overflow-hidden aspect-[4/3] bg-cloud">
-                <ProductArt tone={p.tone} className="w-full h-full group-hover:scale-[1.03] transition-transform duration-500" />
-              </div>
-              <div className="mt-4 flex items-baseline justify-between">
-                <p className="text-ink">{p.name}</p>
-                <p className="text-ink/60 text-sm">{formatINR(p.price)}</p>
-              </div>
-            </a>
-          ))}
+          {featured.map((p, i) => {
+            const discount = [20, 15, 30][i] || 10;
+            const strikeThrough = Math.round(p.price / (1 - discount / 100));
+            return (
+              <a key={p.id} href={`/products/${p.id}`} className="group block">
+                <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-cloud">
+                  <ProductArt tone={p.tone} className="w-full h-full group-hover:scale-[1.03] transition-transform duration-500" />
+                  <span className="absolute top-3 left-3 bg-flame text-paper text-xs font-semibold px-2.5 py-1 rounded-full">
+                    {discount}% off
+                  </span>
+                </div>
+                <div className="mt-4 flex items-baseline justify-between">
+                  <p className="text-ink">{p.name}</p>
+                  <p className="text-sm">
+                    <span className="text-ink/40 line-through mr-2">{formatINR(strikeThrough)}</span>
+                    <span className="text-ink font-medium">{formatINR(p.price)}</span>
+                  </p>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </section>
 

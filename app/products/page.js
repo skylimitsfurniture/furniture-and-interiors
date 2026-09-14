@@ -3,22 +3,32 @@ import { products, formatINR } from "@/lib/products";
 
 const categories = ["All", "Living Room", "Bedroom", "Dining", "Office"];
 
-const spanClass = {
-  large: "md:col-span-2 md:row-span-2 aspect-square md:aspect-auto",
-  medium: "md:col-span-1 md:row-span-2 aspect-[4/5]",
-  small: "aspect-square",
-};
+export default async function ProductsPage({ searchParams }) {
+  const resolvedParams = await searchParams;
+  const active = resolvedParams?.category || "All";
+  const query = resolvedParams?.q?.toLowerCase() || "";
 
-export default function ProductsPage({ searchParams }) {
-  const active = searchParams?.category || "All";
-  const list =
-    active === "All" ? products : products.filter((p) => p.category === active);
+  const list = products.filter((p) => {
+    const matchesCategory =
+      active === "All" || p.category === active;
+
+    const matchesQuery = query
+      ? (p.name && p.name.toLowerCase().includes(query)) ||
+        (p.category && p.category.toLowerCase().includes(query)) ||
+        (p.subcategory && p.subcategory.toLowerCase().includes(query)) ||
+        (p.tags && p.tags.some((t) => t.toLowerCase().includes(query)))
+      : true;
+
+    return matchesCategory && matchesQuery;
+  });
 
   return (
     <main className="max-w-content mx-auto px-6 md:px-10 py-16">
       <div className="mb-12">
         <p className="text-sm text-timber mb-3">Catalog</p>
-        <h1 className="font-display text-4xl text-ink">All furniture</h1>
+        <h1 className="font-display text-4xl text-ink">
+          {resolvedParams?.q ? `Results for "${resolvedParams.q}"` : "All furniture"}
+        </h1>
       </div>
 
       <div className="flex flex-wrap gap-2 mb-12">
@@ -27,7 +37,7 @@ export default function ProductsPage({ searchParams }) {
             key={c}
             href={c === "All" ? "/products" : `/products?category=${encodeURIComponent(c)}`}
             className={`px-4 py-2 rounded-full text-sm border transition-colors ${
-              active === c
+              active === c && !query
                 ? "bg-ink text-paper border-ink"
                 : "border-ink/20 text-ink/70 hover:border-ink/50"
             }`}
@@ -37,17 +47,21 @@ export default function ProductsPage({ searchParams }) {
         ))}
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 md:auto-rows-[180px] gap-6">
+      {/* Uniform grid for compact product cards */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {list.map((p) => (
           <a
             key={p.id}
             href={`/products/${p.id}`}
-            className={`group rounded-2xl overflow-hidden bg-cloud relative flex flex-col ${spanClass[p.size]}`}
+            className="group rounded-2xl overflow-hidden bg-cloud relative flex flex-col h-[280px]"
           >
-            <ProductArt tone={p.tone} className="flex-1 w-full group-hover:scale-[1.03] transition-transform duration-500" />
-            <div className="p-4 bg-paper">
-              <p className="text-ink text-sm md:text-base">{p.name}</p>
-              <p className="text-ink/60 text-xs md:text-sm mt-1">{formatINR(p.price)}</p>
+            <ProductArt
+              tone={p.tone}
+              className="h-[190px] w-full group-hover:scale-[1.03] transition-transform duration-500"
+            />
+            <div className="p-4 bg-paper h-[90px] flex flex-col justify-center">
+              <p className="text-ink text-sm font-medium truncate">{p.name}</p>
+              <p className="text-ink/60 text-xs mt-1">{formatINR(p.price)}</p>
             </div>
           </a>
         ))}

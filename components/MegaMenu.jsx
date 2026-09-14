@@ -1,7 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
+import ProductArt from "@/components/ProductArt";
+import { searchProducts, formatINR } from "@/lib/products";
 
 const categories = [
   {
@@ -104,6 +107,29 @@ const categories = [
 
 export default function MegaMenu() {
   const [activeCategory, setActiveCategory] = useState(null);
+  const [query, setQuery] = useState("");
+  const [showResults, setShowResults] = useState(false);
+  const router = useRouter();
+  const boxRef = useRef(null);
+
+  const results = searchProducts(query).slice(0, 5);
+
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (boxRef.current && !boxRef.current.contains(e.target)) {
+        setShowResults(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  function goToSearch() {
+    if (query.trim()) {
+      setShowResults(false);
+      router.push(`/search?q=${encodeURIComponent(query.trim())}`);
+    }
+  }
 
   return (
     <header className="relative z-50 bg-paper border-b border-cloud font-body text-ink">
@@ -119,12 +145,61 @@ export default function MegaMenu() {
         </Link>
  
         {/* Search Input */}
-        <div className="flex-1 max-w-md mx-8">
+        <div className="flex-1 max-w-md mx-8 relative" ref={boxRef}>
           <input
             type="text"
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setShowResults(true);
+            }}
+            onFocus={() => setShowResults(true)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") goToSearch();
+              if (e.key === "Escape") setShowResults(false);
+            }}
             placeholder="Search sofas, beds, desks..."
             className="w-full px-4 py-2 text-sm bg-cloud/50 border border-cloud rounded-lg focus:outline-none focus:border-timber transition-colors"
           />
+
+          {showResults && query.trim() && (
+            <div className="absolute top-full left-0 w-full bg-paper border border-cloud rounded-xl shadow-xl mt-2 overflow-hidden z-50">
+              {results.length === 0 ? (
+                <p className="px-4 py-4 text-sm text-ink/50">
+                  No matches for “{query}” yet.
+                </p>
+              ) : (
+                <>
+                  <ul>
+                    {results.map((p) => (
+                      <li key={p.id}>
+                        <Link
+                          href={`/products/${p.id}`}
+                          onClick={() => setShowResults(false)}
+                          className="flex items-center gap-3 px-4 py-3 hover:bg-cloud/50 transition-colors"
+                        >
+                          <div className="w-12 h-12 rounded-lg overflow-hidden bg-cloud shrink-0">
+                            <ProductArt tone={p.tone} className="w-full h-full" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm text-ink truncate">{p.name}</p>
+                            <p className="text-xs text-ink/50">{p.category}</p>
+                          </div>
+                          <p className="text-xs text-ink/70 shrink-0">{formatINR(p.price)}</p>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    onClick={goToSearch}
+                    className="w-full text-left px-4 py-3 text-sm text-timber hover:bg-cloud/50 border-t border-cloud transition-colors"
+                  >
+                    See all results for “{query}” →
+                  </button>
+                </>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Header Action Links */}
@@ -177,7 +252,8 @@ export default function MegaMenu() {
                       {group.items.map((item, i) => (
                         <li key={i}>
                           <Link
-                            href="#"
+                            href={`/products?q=${encodeURIComponent(item)}`}
+                            onClick={() => setActiveCategory(null)}
                             className="text-xs text-ink/80 hover:text-timber transition-colors block"
                           >
                             {item}
