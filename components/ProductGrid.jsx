@@ -3,6 +3,7 @@
 import { useState } from "react";
 import ProductArt from "@/components/ProductArt";
 import { formatINR } from "@/lib/products";
+import { getCloudinaryMedia, getCloudinaryHdMedia } from "@/utils/cloudinary";
 
 export default function ProductGrid({ products }) {
   const [selected, setSelected] = useState(null);
@@ -14,13 +15,21 @@ export default function ProductGrid({ products }) {
           <div key={p.id} className="group">
             <button
               onClick={() => setSelected(p)}
-              className="w-full rounded-2xl overflow-hidden bg-cloud aspect-square block"
+              className="w-full rounded-2xl overflow-hidden bg-cloud aspect-square block relative"
             >
-              {/* Swap ProductArt for a real <img src={p.image}> once photos are ready */}
-              <ProductArt
-                tone={p.tone}
-                className="w-full h-full group-hover:scale-[1.04] transition-transform duration-300"
-              />
+              {p.image ? (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  src={getCloudinaryMedia(p.image, { width: 800 })}
+                  alt={p.name}
+                  className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-300"
+                />
+              ) : (
+                <ProductArt
+                  tone={p.tone}
+                  className="w-full h-full group-hover:scale-[1.04] transition-transform duration-300"
+                />
+              )}
             </button>
             <a href={`/products/${p.id}`} className="block mt-3">
               <p className="text-ink text-sm">{p.name}</p>
@@ -39,8 +48,17 @@ export default function ProductGrid({ products }) {
             onClick={(e) => e.stopPropagation()}
             className="bg-paper rounded-2xl overflow-hidden max-w-lg w-full"
           >
-            <div className="aspect-square bg-cloud">
-              <ProductArt tone={selected.tone} className="w-full h-full" />
+            <div className="aspect-square bg-cloud relative overflow-hidden">
+              {selected.image ? (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  src={getCloudinaryHdMedia(selected.image, 1200)}
+                  alt={selected.name}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <ProductArt tone={selected.tone} className="w-full h-full" />
+              )}
             </div>
             <div className="p-6 flex items-center justify-between">
               <div>

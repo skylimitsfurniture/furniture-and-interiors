@@ -1,6 +1,7 @@
 import ProductArt from "@/components/ProductArt";
 import VideoBanner from "@/components/VideoBanner";
 import { products, formatINR } from "@/lib/products";
+import { getCloudinaryMedia } from "@/utils/cloudinary";
 
 export default function Home() {
   const featured = products.slice(0, 3);
@@ -72,7 +73,16 @@ export default function Home() {
             return (
               <a key={p.id} href={`/products/${p.id}`} className="group block">
                 <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-cloud">
-                  <ProductArt tone={p.tone} className="w-full h-full group-hover:scale-[1.03] transition-transform duration-500" />
+                  {p.image ? (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      src={getCloudinaryMedia(p.image, { width: 800 })}
+                      alt={p.name}
+                      className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                    />
+                  ) : (
+                    <ProductArt tone={p.tone} className="w-full h-full group-hover:scale-[1.03] transition-transform duration-500" />
+                  )}
                   <span className="absolute top-3 left-3 bg-flame text-paper text-xs font-semibold px-2.5 py-1 rounded-full">
                     {discount}% off
                   </span>

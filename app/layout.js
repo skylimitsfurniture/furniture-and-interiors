@@ -1,6 +1,11 @@
 import { Fraunces, Work_Sans } from "next/font/google";
 import "./globals.css";
 import MegaMenu from "@/components/MegaMenu";
+import RightSidebar from "@/components/RightSidebar";
+import AIChatbot from "@/components/AIChatbot";
+import AuthModal from "@/components/AuthModal";
+import PricingModal from "@/components/PricingModal";
+import { AuthProvider } from "@/context/AuthContext";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -24,9 +29,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${fraunces.variable} ${workSans.variable}`}>
       <body className="font-body antialiased bg-paper text-ink">
-        <MegaMenu />
-        {children}
-        <Footer />
+        <AuthProvider>
+          <MegaMenu />
+          {children}
+          <Footer />
+          <RightSidebar />
+          <AIChatbot />
+          <AuthModal />
+          <PricingModal />
+        </AuthProvider>
       </body>
     </html>
   );

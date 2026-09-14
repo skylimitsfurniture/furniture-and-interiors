@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import ProductArt from "@/components/ProductArt";
 import { searchProducts, formatINR } from "@/lib/products";
+import { getCloudinaryMedia } from "@/utils/cloudinary";
+import { useAuth } from "@/context/AuthContext";
 
 const categories = [
   {
@@ -106,6 +108,15 @@ const categories = [
 ];
 
 export default function MegaMenu() {
+  const {
+    user,
+    profile,
+    isSubscribed,
+    openAuthModal,
+    openPricingModal,
+    signOut,
+  } = useAuth();
+
   const [activeCategory, setActiveCategory] = useState(null);
   const [query, setQuery] = useState("");
   const [showResults, setShowResults] = useState(false);
@@ -178,8 +189,17 @@ export default function MegaMenu() {
                           onClick={() => setShowResults(false)}
                           className="flex items-center gap-3 px-4 py-3 hover:bg-cloud/50 transition-colors"
                         >
-                          <div className="w-12 h-12 rounded-lg overflow-hidden bg-cloud shrink-0">
-                            <ProductArt tone={p.tone} className="w-full h-full" />
+                          <div className="w-12 h-12 rounded-lg overflow-hidden bg-cloud shrink-0 relative">
+                            {p.image ? (
+                              /* eslint-disable-next-line @next/next/no-img-element */
+                              <img
+                                src={getCloudinaryMedia(p.image, { width: 120, height: 120 })}
+                                alt={p.name}
+                                className="w-full h-full object-cover"
+                              />
+                            ) : (
+                              <ProductArt tone={p.tone} className="w-full h-full" />
+                            )}
                           </div>
                           <div className="flex-1 min-w-0">
                             <p className="text-sm text-ink truncate">{p.name}</p>
@@ -203,8 +223,48 @@ export default function MegaMenu() {
         </div>
 
         {/* Header Action Links */}
-        <div className="flex items-center space-x-6 text-sm font-medium">
-          <Link href="/account" className="hover:text-timber transition-colors">Account</Link>
+        <div className="flex items-center space-x-5 text-sm font-medium">
+          {/* VIP Pro Status Pill */}
+          {!isSubscribed ? (
+            <button
+              type="button"
+              onClick={openPricingModal}
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-300 text-amber-900 text-xs font-semibold hover:bg-amber-100 transition-colors shadow-xs"
+            >
+              <span>⭐</span>
+              <span>VIP Pro</span>
+            </button>
+          ) : (
+            <span className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-100 border border-amber-300 text-amber-900 text-xs font-bold shadow-xs">
+              <span>👑</span>
+              <span>VIP</span>
+            </span>
+          )}
+
+          {/* User Account / Sign In */}
+          {user ? (
+            <div className="flex items-center gap-3">
+              <span className="text-xs text-ink/70 font-semibold truncate max-w-[120px]">
+                {profile?.fullName || user.email?.split("@")[0]}
+              </span>
+              <button
+                type="button"
+                onClick={signOut}
+                className="text-xs text-timber hover:text-timberdark underline"
+              >
+                Sign Out
+              </button>
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={() => openAuthModal("login")}
+              className="hover:text-timber transition-colors text-sm font-medium cursor-pointer"
+            >
+              Sign In
+            </button>
+          )}
+
           <Link href="/wishlist" className="hover:text-timber transition-colors">Wishlist</Link>
           <Link href="/cart" className="hover:text-timber transition-colors">Cart</Link>
         </div>
@@ -252,7 +312,9 @@ export default function MegaMenu() {
                       {group.items.map((item, i) => (
                         <li key={i}>
                           <Link
-                            href={`/products?q=${encodeURIComponent(item)}`}
+                            href={`/products?category=${encodeURIComponent(
+                              categories.find((c) => c.slug === activeCategory)?.name || ""
+                            )}&subcategory=${encodeURIComponent(item)}`}
                             onClick={() => setActiveCategory(null)}
                             className="text-xs text-ink/80 hover:text-timber transition-colors block"
                           >
