@@ -1,119 +1,130 @@
+import CategoryGrid from "@/components/CategoryGrid";
+import VideoShowcase from "@/components/VideoShowcase";
+import OffersCarousel from "@/components/OffersCarousel";
+import PartnersMarquee from "@/components/PartnersMarquee";
 import ProductArt from "@/components/ProductArt";
 import VideoBanner from "@/components/VideoBanner";
-import { products, formatINR } from "@/lib/products";
-import { getCloudinaryMedia } from "@/utils/cloudinary";
+import Link from "next/link";
+
+export const metadata = {
+  title: "Skylimits Furniture | Solid Timber & Architectural Living",
+  description:
+    "Explore 140+ handcrafted furniture pieces across Living Room, Bedroom, Dining, and Office. Visakhapatnam artisan craftsmanship built to outlast the lease.",
+};
 
 export default function Home() {
-  const featured = products.slice(0, 3);
-
   return (
-    <main>
-      {/* Hero — dual promo banners */}
-      <section className="max-w-content mx-auto px-4 md:px-10 pt-6 pb-16 grid md:grid-cols-2 gap-4">
+    <main className="min-h-screen bg-[#FBFAF7] text-[#1E2A32] overflow-x-hidden">
+      {/* 1. Hero Promo Banners (Dual Promo Highlight) */}
+      <section className="max-w-[1240px] mx-auto px-4 md:px-8 pt-6 pb-12 grid md:grid-cols-2 gap-5">
         <VideoBanner
           videoUrl={process.env.NEXT_PUBLIC_GANESH_VIDEO_URL || "/videos/ganesh-chaturthi.mp4"}
           posterUrl={process.env.NEXT_PUBLIC_GANESH_VIDEO_POSTER}
         />
 
-        {/* Banner 2: New arrivals */}
-        <a
-          href="/products"
-          className="group relative rounded-2xl overflow-hidden bg-plum text-paper min-h-[380px] flex flex-col justify-between p-8 md:p-10"
+        {/* Hero Card 2: The Hollow Bedroom Collection */}
+        <Link
+          href="/products?category=Bedroom"
+          className="group relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#7A2E58] to-[#451830] text-[#FBFAF7] min-h-[380px] flex flex-col justify-between p-8 md:p-12 shadow-xl hover:shadow-2xl transition-all duration-300"
         >
-          <ProductArt tone="sage" className="absolute right-[-20px] top-[-20px] w-56 h-56 opacity-25 pointer-events-none" />
+          <ProductArt
+            tone="sage"
+            className="absolute right-[-20px] top-[-20px] w-64 h-64 opacity-25 pointer-events-none group-hover:scale-110 transition-transform duration-700"
+          />
+
           <div>
-            <span className="inline-block bg-paper text-plum text-xs font-semibold px-3 py-1 rounded-full">
-              New arrivals
-            </span>
-            <h1 className="font-display text-4xl md:text-5xl leading-[1.05] mt-5">
-              Bedrooms, <br /> reimagined
+            <div className="inline-flex items-center gap-1.5 bg-[#FBFAF7] text-[#7A2E58] text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+              <span>✦</span> New Collection 2026
+            </div>
+            <h1 className="font-display text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
+              Bedrooms, <br />
+              <span className="italic font-normal">reimagined.</span>
             </h1>
           </div>
-          <div className="flex items-end justify-between">
-            <p className="text-paper/85 text-sm max-w-[220px]">
-              The Hollow collection just landed — minimalist frames in deep
-              ink and walnut.
+
+          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mt-6">
+            <p className="text-[#FBFAF7]/85 text-xs md:text-sm max-w-[260px] leading-relaxed">
+              The Hollow edit just landed — handcrafted low-platform timber frames in deep ink and warm walnut.
             </p>
-            <span className="shrink-0 px-5 py-2.5 rounded-full bg-paper text-plum text-sm font-semibold group-hover:bg-cloud transition-colors">
-              Explore
+            <span className="shrink-0 px-6 py-3 rounded-full bg-[#FBFAF7] text-[#7A2E58] text-xs md:text-sm font-bold group-hover:bg-[#EDE8DE] transition-all shadow-md group-hover:scale-105">
+              Shop The Edit →
             </span>
           </div>
-        </a>
+        </Link>
       </section>
 
-      {/* Trust strip */}
-      <section className="max-w-content mx-auto px-4 md:px-10 mb-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+      {/* 2. Trust & Craftsmanship Value Strip */}
+      <section className="max-w-[1240px] mx-auto px-4 md:px-8 mb-14">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 text-center">
           {[
-            ["Free Shipping", "On every order, pan-India"],
-            ["1,200+", "Homes furnished so far"],
-            ["Solid Timber", "No flat-pack shortcuts"],
-            ["7-Day Returns", "No questions asked"],
-          ].map(([title, sub]) => (
-            <div key={title} className="rounded-xl bg-cloud/60 px-3 py-5">
-              <p className="font-display text-lg text-ink">{title}</p>
-              <p className="text-xs text-ink/60 mt-1">{sub}</p>
+            ["Free Shipping", "Pan-India delivery on all orders", "🚚"],
+            ["1,200+ Homes", "Furnished with lasting care", "🏡"],
+            ["Solid Timber", "No flat-pack shortcuts or veneers", "🪵"],
+            ["10-Year Warranty", "Joinery integrity guaranteed", "🛡️"],
+          ].map(([title, sub, icon]) => (
+            <div
+              key={title}
+              className="rounded-2xl bg-white border border-[#EDE8DE] hover:border-[#8B5E3C]/30 p-4 md:p-5 shadow-xs transition-all hover:shadow-md"
+            >
+              <span className="text-xl md:text-2xl mb-1.5 block">{icon}</span>
+              <p className="font-display text-sm md:text-base font-semibold text-[#1E2A32]">{title}</p>
+              <p className="text-[11px] md:text-xs text-[#1E2A32]/60 mt-0.5">{sub}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Featured products */}
-      <section className="max-w-content mx-auto px-6 md:px-10 py-24">
-        <div className="flex items-end justify-between mb-10">
-          <h2 className="font-display text-3xl text-ink">A few favourites</h2>
-          <a href="/products" className="text-sm text-timber hover:text-timberdark">
-            View all
-          </a>
-        </div>
-        <div className="grid md:grid-cols-3 gap-8">
-          {featured.map((p, i) => {
-            const discount = [20, 15, 30][i] || 10;
-            const strikeThrough = Math.round(p.price / (1 - discount / 100));
-            return (
-              <a key={p.id} href={`/products/${p.id}`} className="group block">
-                <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-cloud">
-                  {p.image ? (
-                    /* eslint-disable-next-line @next/next/no-img-element */
-                    <img
-                      src={getCloudinaryMedia(p.image, { width: 800 })}
-                      alt={p.name}
-                      className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
-                    />
-                  ) : (
-                    <ProductArt tone={p.tone} className="w-full h-full group-hover:scale-[1.03] transition-transform duration-500" />
-                  )}
-                  <span className="absolute top-3 left-3 bg-flame text-paper text-xs font-semibold px-2.5 py-1 rounded-full">
-                    {discount}% off
-                  </span>
-                </div>
-                <div className="mt-4 flex items-baseline justify-between">
-                  <p className="text-ink">{p.name}</p>
-                  <p className="text-sm">
-                    <span className="text-ink/40 line-through mr-2">{formatINR(strikeThrough)}</span>
-                    <span className="text-ink font-medium">{formatINR(p.price)}</span>
-                  </p>
-                </div>
-              </a>
-            );
-          })}
+      {/* 3. Hero / Category Display Section (5x5 Grid per Category Tab) */}
+      <CategoryGrid />
+
+      {/* 4. Video Display / Cinematic Event Showcase Section (Sound + Controls) */}
+      <div id="video-showcase">
+        <VideoShowcase />
+      </div>
+
+      {/* 5. Interactive Offers & Highlights Carousel (5 Slides + Destination Links) */}
+      <OffersCarousel />
+
+      {/* 6. Brand Statement & Studio Heritage */}
+      <section id="story" className="w-full py-20 md:py-28 bg-[#EDE8DE]/50 border-y border-[#EDE8DE]">
+        <div className="max-w-[1240px] mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#8B5E3C]/10 text-[#8B5E3C] text-xs font-bold uppercase tracking-wider mb-3">
+              <span>✦</span> The Skylimits Philosophy
+            </div>
+            <h2 className="font-display text-3xl md:text-5xl text-[#1E2A32] leading-tight">
+              We build for real homes, not fleeting showrooms.
+            </h2>
+          </div>
+          <div className="space-y-4 text-sm md:text-base text-[#1E2A32]/75 leading-relaxed">
+            <p>
+              Every frame is joined, sanded, and hand-finished by our dedicated team of carpenters in Visakhapatnam. We reject flat-pack shortcuts and synthetic composite fillers.
+            </p>
+            <p>
+              From solid kiln-dried teak to organic linen weaves and forged brass joints, each piece is engineered to outlast leases and grow richer with patina over decades.
+            </p>
+            <div className="pt-2 flex items-center gap-6">
+              <div>
+                <p className="font-display text-2xl font-bold text-[#8B5E3C]">100%</p>
+                <p className="text-xs text-[#1E2A32]/60">Hand-finished in Vizag</p>
+              </div>
+              <div className="h-8 w-[1px] bg-[#EDE8DE]" />
+              <div>
+                <p className="font-display text-2xl font-bold text-[#8B5E3C]">FSC Teak</p>
+                <p className="text-xs text-[#1E2A32]/60">Sustainably Harvested</p>
+              </div>
+              <div className="h-8 w-[1px] bg-[#EDE8DE]" />
+              <div>
+                <p className="font-display text-2xl font-bold text-[#8B5E3C]">140+</p>
+                <p className="text-xs text-[#1E2A32]/60">Original Blueprints</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Brand statement */}
-      <section id="story" className="bg-cloud/60">
-        <div className="max-w-content mx-auto px-6 md:px-10 py-24 grid md:grid-cols-2 gap-12">
-          <p className="font-display text-3xl md:text-4xl text-ink leading-snug">
-            We started Skylimits because most furniture is built for the
-            showroom, not the home.
-          </p>
-          <p className="text-ink/70 leading-relaxed self-end">
-            Every frame is joined, sanded, and finished by the same small team
-            of carpenters in Visakhapatnam. No flat-pack shortcuts — just
-            furniture meant to be lived on for years, not one lease.
-          </p>
-        </div>
-      </section>
+      {/* 7. Our Partners & Collaborators Section (Auto-Scrolling Ticker) */}
+      <PartnersMarquee />
     </main>
   );
 }

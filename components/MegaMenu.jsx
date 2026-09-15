@@ -120,6 +120,7 @@ export default function MegaMenu() {
   const [activeCategory, setActiveCategory] = useState(null);
   const [query, setQuery] = useState("");
   const [showResults, setShowResults] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const router = useRouter();
   const boxRef = useRef(null);
 
@@ -265,13 +266,79 @@ export default function MegaMenu() {
             </button>
           )}
 
-          <Link href="/wishlist" className="hover:text-timber transition-colors">Wishlist</Link>
-          <Link href="/cart" className="hover:text-timber transition-colors">Cart</Link>
+          <Link href="/wishlist" className="hidden sm:inline hover:text-timber transition-colors">Wishlist</Link>
+          <Link href="/cart" className="flex items-center gap-1 hover:text-timber transition-colors">
+            <span className="text-base">🛒</span>
+            <span className="hidden sm:inline">Cart</span>
+          </Link>
+
+          {/* Hamburger Menu Button for Mobile */}
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 rounded-lg text-ink hover:bg-cloud/60 transition-colors"
+            aria-label="Toggle mobile menu"
+          >
+            {mobileMenuOpen ? (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
         </div>
       </div>
 
+      {/* Mobile Drawer Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-paper border-t border-cloud/70 px-4 py-6 shadow-xl animate-in slide-in-from-top duration-200">
+          <div className="space-y-4">
+            <p className="text-xs font-bold text-timber uppercase tracking-wider">Browse Collections</p>
+            <div className="grid grid-cols-2 gap-2">
+              {categories.map((cat) => (
+                <Link
+                  key={cat.slug}
+                  href={`/products?category=${encodeURIComponent(cat.name)}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-4 py-3 rounded-xl bg-cloud/40 hover:bg-cloud font-medium text-sm text-ink transition-colors block text-center"
+                >
+                  {cat.name}
+                </Link>
+              ))}
+            </div>
+
+            <div className="pt-4 border-t border-cloud/60 space-y-2">
+              <Link
+                href="/products"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block py-2 text-sm font-semibold text-timber hover:underline"
+              >
+                All Furniture Catalog →
+              </Link>
+              <Link
+                href="/wishlist"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block py-2 text-sm text-ink/80 hover:text-timber"
+              >
+                Saved Wishlist
+              </Link>
+              <Link
+                href="/cart"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block py-2 text-sm text-ink/80 hover:text-timber"
+              >
+                Shopping Cart
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Categories Bar */}
-      <nav className="border-t border-cloud/60 bg-paper">
+      <nav className="hidden md:block border-t border-cloud/60 bg-paper">
         <div className="max-w-[1180px] mx-auto px-4 flex space-x-8">
           {categories.map((cat) => (
             <div
