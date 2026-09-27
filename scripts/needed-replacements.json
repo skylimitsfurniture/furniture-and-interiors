@@ -1,0 +1,548 @@
+[
+  {
+    "id": "chair-elba-ac",
+    "title": "Elba Swivel Pod Chair",
+    "category": "Living Room",
+    "subcategory": "Accent Chairs"
+  },
+  {
+    "id": "chair-leather-dc",
+    "title": "Saddle Leather Dining Chair",
+    "category": "Dining Room",
+    "subcategory": "Dining Chairs"
+  },
+  {
+    "id": "stool-cove-bs",
+    "title": "Cove Upholstered High Stool",
+    "category": "Dining Room",
+    "subcategory": "Bar Stools"
+  },
+  {
+    "id": "chair-nord-ec",
+    "title": "Nord High-Back Wool Task Chair",
+    "category": "Office",
+    "subcategory": "Ergonomic Chairs"
+  },
+  {
+    "id": "bed-meridian-pb",
+    "title": "Meridian Floating Nightstand High-Density MDF Storage Bed",
+    "category": "Bedroom",
+    "subcategory": "Platform Beds"
+  },
+  {
+    "id": "bed-vanguard-king",
+    "title": "Vanguard Drawer Storage King Bed",
+    "category": "Bedroom",
+    "subcategory": "King Size Beds"
+  },
+  {
+    "id": "chair-flint-ac",
+    "title": "Flint Low-Slung Occasional Chair",
+    "category": "Living Room",
+    "subcategory": "Accent Chairs"
+  },
+  {
+    "id": "chair-bench-dc",
+    "title": "Marrow Dining Bench",
+    "category": "Dining Room",
+    "subcategory": "Dining Chairs"
+  },
+  {
+    "id": "stool-zen-bs",
+    "title": "Zen Minimal Backless Stool",
+    "category": "Dining Room",
+    "subcategory": "Bar Stools"
+  },
+  {
+    "id": "chair-drafting-ec",
+    "title": "Draftsman High Ergo Stool",
+    "category": "Office",
+    "subcategory": "Ergonomic Chairs"
+  },
+  {
+    "id": "chair-cane-dc",
+    "title": "Aura Cane Dining Chair",
+    "category": "Dining Room",
+    "subcategory": "Dining Chairs"
+  },
+  {
+    "id": "stool-kato-bs",
+    "title": "Kato Swivel Timber Bar Stool",
+    "category": "Dining Room",
+    "subcategory": "Bar Stools"
+  },
+  {
+    "id": "desk-haven-wd",
+    "title": "Haven Executive Writing Desk",
+    "category": "Office",
+    "subcategory": "Writing Desks"
+  },
+  {
+    "id": "chair-ergo-timber",
+    "title": "Soma Timber Ergonomic Chair",
+    "category": "Office",
+    "subcategory": "Ergonomic Chairs"
+  },
+  {
+    "id": "chair-upholstered-dc",
+    "title": "Linden Padded Dining Chair",
+    "category": "Dining Room",
+    "subcategory": "Dining Chairs"
+  },
+  {
+    "id": "stool-cane-bs",
+    "title": "Aura Cane Counter Stool",
+    "category": "Dining Room",
+    "subcategory": "Bar Stools"
+  },
+  {
+    "id": "chair-kanso-ec",
+    "title": "Kanso Padded Swivel Desk Chair",
+    "category": "Office",
+    "subcategory": "Ergonomic Chairs"
+  },
+  {
+    "id": "chair-wishbone-dc",
+    "title": "Y-Back Wishbone Dining Chair",
+    "category": "Dining Room",
+    "subcategory": "Dining Chairs"
+  },
+  {
+    "id": "stool-noir-bs",
+    "title": "Noir Minimal Bar Stool",
+    "category": "Dining Room",
+    "subcategory": "Bar Stools"
+  },
+  {
+    "id": "chair-strata-ec",
+    "title": "Strata Executive Leather Chair",
+    "category": "Office",
+    "subcategory": "Ergonomic Chairs"
+  },
+  {
+    "id": "table-dune-ct",
+    "title": "Dune Low Sanded Teak Table",
+    "category": "Living Room",
+    "subcategory": "Coffee Tables"
+  },
+  {
+    "id": "bedside-dowel-nt",
+    "title": "Dowel Open Shelf Nightstand",
+    "category": "Bedroom",
+    "subcategory": "Bedside Tables"
+  },
+  {
+    "id": "table-raw-dt",
+    "title": "Rustic Live-Edge Teak Dining Table",
+    "category": "Dining Room",
+    "subcategory": "Dining Tables"
+  },
+  {
+    "id": "chair-noir-dc",
+    "title": "Kuro Blackened Dining Chair",
+    "category": "Dining Room",
+    "subcategory": "Dining Chairs"
+  },
+  {
+    "id": "stool-saddle-bs",
+    "title": "Bronco Leather Saddle Stool",
+    "category": "Dining Room",
+    "subcategory": "Bar Stools"
+  },
+  {
+    "id": "chair-posture-ec",
+    "title": "Active Balance Kneeling Chair",
+    "category": "Office",
+    "subcategory": "Ergonomic Chairs"
+  },
+  {
+    "id": "wardrobe-sylvan-wd",
+    "title": "Sylvan Sliding Door Wardrobe",
+    "category": "Bedroom",
+    "subcategory": "Wardrobes"
+  },
+  {
+    "id": "chair-carver-dc",
+    "title": "Haven Carver Armchair (Dining)",
+    "category": "Dining Room",
+    "subcategory": "Dining Chairs"
+  },
+  {
+    "id": "stool-tractor-bs",
+    "title": "Bespoke Tractor-Seat Stool",
+    "category": "Dining Room",
+    "subcategory": "Bar Stools"
+  },
+  {
+    "id": "chair-cane-ec",
+    "title": "Atelier Cane Back Swivel Chair",
+    "category": "Office",
+    "subcategory": "Ergonomic Chairs"
+  },
+  {
+    "id": "shelf-kanso-bs",
+    "title": "Kanso Open Ladder Shelf",
+    "category": "Office",
+    "subcategory": "Bookshelves"
+  },
+  {
+    "id": "table-calvi-ct",
+    "title": "Calvi Round Glass & Teak Table",
+    "category": "Living Room",
+    "subcategory": "Coffee Tables"
+  },
+  {
+    "id": "bedside-sage-nt",
+    "title": "Sage Fluted Nightstand",
+    "category": "Bedroom",
+    "subcategory": "Bedside Tables"
+  },
+  {
+    "id": "table-extend-dt",
+    "title": "Extendo Butterfly Extension Table",
+    "category": "Dining Room",
+    "subcategory": "Dining Tables"
+  },
+  {
+    "id": "chair-slat-dc",
+    "title": "Kyoto Slat-Back Dining Chair",
+    "category": "Dining Room",
+    "subcategory": "Dining Chairs"
+  },
+  {
+    "id": "stool-stack-bs",
+    "title": "Trio Stackable Counter Stool",
+    "category": "Dining Room",
+    "subcategory": "Bar Stools"
+  },
+  {
+    "id": "desk-walnut-wd",
+    "title": "Vesper Solid Walnut Desk",
+    "category": "Office",
+    "subcategory": "Writing Desks"
+  },
+  {
+    "id": "chair-saddle-ec",
+    "title": "Capisco Saddle Motion Chair",
+    "category": "Office",
+    "subcategory": "Ergonomic Chairs"
+  },
+  {
+    "id": "chair-velvet-dc",
+    "title": "Plaza Velvet Dining Chair",
+    "category": "Dining Room",
+    "subcategory": "Dining Chairs"
+  },
+  {
+    "id": "stool-brass-bs",
+    "title": "Aura Brass Accented Bar Stool",
+    "category": "Dining Room",
+    "subcategory": "Bar Stools"
+  },
+  {
+    "id": "chair-ribbed-ec",
+    "title": "Verona Ribbed Leather Desk Chair",
+    "category": "Office",
+    "subcategory": "Ergonomic Chairs"
+  },
+  {
+    "id": "chair-dining-nook-dc",
+    "title": "Nook Solid Timber Dining Chair",
+    "category": "Dining Room",
+    "subcategory": "Dining Chairs"
+  },
+  {
+    "id": "stool-pella-bs",
+    "title": "Pella High Bar Stool",
+    "category": "Dining Room",
+    "subcategory": "Bar Stools"
+  },
+  {
+    "id": "chair-aero-ec",
+    "title": "Aero High-Back Mesh Task Chair",
+    "category": "Office",
+    "subcategory": "Ergonomic Chairs"
+  },
+  {
+    "id": "bedside-nook-nt",
+    "title": "Nook Bedside Table",
+    "category": "Bedroom",
+    "subcategory": "Bedside Tables"
+  },
+  {
+    "id": "table-breeze-dt",
+    "title": "Breeze 4-Seater Compact Dining Table",
+    "category": "Dining Room",
+    "subcategory": "Dining Tables"
+  },
+  {
+    "id": "desk-cane-wd",
+    "title": "Aura Cane Privacy Writing Desk",
+    "category": "Office",
+    "subcategory": "Writing Desks"
+  },
+  {
+    "id": "bedside-kanso-nt",
+    "title": "Kanso Minimal Floating Nightstand",
+    "category": "Bedroom",
+    "subcategory": "Bedside Tables"
+  },
+  {
+    "id": "table-haven-dt",
+    "title": "Haven 8-Seater Banquet Table",
+    "category": "Dining Room",
+    "subcategory": "Dining Tables"
+  },
+  {
+    "id": "desk-compact-wd",
+    "title": "Atelier Compact Nook Desk",
+    "category": "Office",
+    "subcategory": "Writing Desks"
+  },
+  {
+    "id": "bedside-cane-nt",
+    "title": "Cane Weave Bedside Cabinet",
+    "category": "Bedroom",
+    "subcategory": "Bedside Tables"
+  },
+  {
+    "id": "table-valle-dt",
+    "title": "Valle Oval Timber Dining Table",
+    "category": "Dining Room",
+    "subcategory": "Dining Tables"
+  },
+  {
+    "id": "desk-shelf-wd",
+    "title": "Strata Desk with Integrated Hutch",
+    "category": "Office",
+    "subcategory": "Writing Desks"
+  },
+  {
+    "id": "bedside-ink-nt",
+    "title": "Vesper Blackened Oak Nightstand",
+    "category": "Bedroom",
+    "subcategory": "Bedside Tables"
+  },
+  {
+    "id": "table-marmo-dt",
+    "title": "Marmo Italian Marble Dining Table",
+    "category": "Dining Room",
+    "subcategory": "Dining Tables"
+  },
+  {
+    "id": "desk-trestle-wd",
+    "title": "Architect Trestle Drafting Desk",
+    "category": "Office",
+    "subcategory": "Writing Desks"
+  },
+  {
+    "id": "bedside-round-nt",
+    "title": "Cyrus Round Pedestal Nightstand",
+    "category": "Bedroom",
+    "subcategory": "Bedside Tables"
+  },
+  {
+    "id": "table-noir-dt",
+    "title": "Noir Charcoal Trestle Table",
+    "category": "Dining Room",
+    "subcategory": "Dining Tables"
+  },
+  {
+    "id": "desk-drawer-wd",
+    "title": "Nord 3-Drawer Study Desk",
+    "category": "Office",
+    "subcategory": "Writing Desks"
+  },
+  {
+    "id": "bedside-luxe-nt",
+    "title": "Milo Marble & Teak Bedside Table",
+    "category": "Bedroom",
+    "subcategory": "Bedside Tables"
+  },
+  {
+    "id": "table-canton-dt",
+    "title": "Canton Round Pedestal Dining Table",
+    "category": "Dining Room",
+    "subcategory": "Dining Tables"
+  },
+  {
+    "id": "desk-linear-wd",
+    "title": "Linea Fluted Front Writing Desk",
+    "category": "Office",
+    "subcategory": "Writing Desks"
+  },
+  {
+    "id": "bedside-arlo-nt",
+    "title": "Arlo Bedside Table",
+    "category": "Bedroom",
+    "subcategory": "Bedside Tables"
+  },
+  {
+    "id": "bed-kumo-pb",
+    "title": "Kumo Zen Artisan Tatami Solid Teak Cot",
+    "category": "Bedroom",
+    "subcategory": "Platform Beds"
+  },
+  {
+    "id": "bed-aspen-king",
+    "title": "Aspen Solid Teakwood King Bed",
+    "category": "Bedroom",
+    "subcategory": "King Size Beds"
+  },
+  {
+    "id": "wardrobe-fluted-wd",
+    "title": "Kallos Fluted 2-Door Wardrobe",
+    "category": "Bedroom",
+    "subcategory": "Wardrobes"
+  },
+  {
+    "id": "bedside-trio-nt",
+    "title": "Triad 3-Drawer Bedside Chest",
+    "category": "Bedroom",
+    "subcategory": "Bedside Tables"
+  },
+  {
+    "id": "table-zen-dt",
+    "title": "Zen Minimalist Slat Table",
+    "category": "Dining Room",
+    "subcategory": "Dining Tables"
+  },
+  {
+    "id": "shelf-ink-bs",
+    "title": "Vesper Blackened Steel & Teak Shelving",
+    "category": "Office",
+    "subcategory": "Bookshelves"
+  },
+  {
+    "id": "bed-grand-king",
+    "title": "Grand Horizon Solid Teak King Bed",
+    "category": "Bedroom",
+    "subcategory": "King Size Beds"
+  },
+  {
+    "id": "wardrobe-palermo-wd",
+    "title": "Palermo 4-Door Master Wardrobe",
+    "category": "Bedroom",
+    "subcategory": "Wardrobes"
+  },
+  {
+    "id": "shelf-low-bs",
+    "title": "Low Credenza Bookshelf",
+    "category": "Office",
+    "subcategory": "Bookshelves"
+  },
+  {
+    "id": "bed-elysian-king",
+    "title": "Elysian Velvet Wing King High-Density MDF Storage Bed",
+    "category": "Bedroom",
+    "subcategory": "King Size Beds"
+  },
+  {
+    "id": "wardrobe-cane-wd",
+    "title": "Aura Woven Cane Armoire",
+    "category": "Bedroom",
+    "subcategory": "Wardrobes"
+  },
+  {
+    "id": "shelf-wall-bs",
+    "title": "Floating Wall Shelf Trio",
+    "category": "Office",
+    "subcategory": "Bookshelves"
+  },
+  {
+    "id": "bed-valencia-king",
+    "title": "Valencia Hydraulic Storage King Bed",
+    "category": "Bedroom",
+    "subcategory": "King Size Beds"
+  },
+  {
+    "id": "wardrobe-compact-wd",
+    "title": "Stow Single-Door Nook Wardrobe",
+    "category": "Bedroom",
+    "subcategory": "Wardrobes"
+  },
+  {
+    "id": "shelf-asym-bs",
+    "title": "Staccato Asymmetrical Bookcase",
+    "category": "Office",
+    "subcategory": "Bookshelves"
+  },
+  {
+    "id": "bed-cove-king",
+    "title": "Cove Fluted Headboard King Solid Teak Cot",
+    "category": "Bedroom",
+    "subcategory": "King Size Beds"
+  },
+  {
+    "id": "wardrobe-nord-wd",
+    "title": "Nord Minimal Tall Wardrobe",
+    "category": "Bedroom",
+    "subcategory": "Wardrobes"
+  },
+  {
+    "id": "shelf-cane-bs",
+    "title": "Aura Cane Door Bookcase",
+    "category": "Office",
+    "subcategory": "Bookshelves"
+  },
+  {
+    "id": "bed-malabar-king",
+    "title": "Malabar Four-Poster King High-Density MDF Storage Bed",
+    "category": "Bedroom",
+    "subcategory": "King Size Beds"
+  },
+  {
+    "id": "bed-florence-king",
+    "title": "Florence Channel Tufted King Solid Teak Cot",
+    "category": "Bedroom",
+    "subcategory": "King Size Beds"
+  },
+  {
+    "id": "wardrobe-sol-wd",
+    "title": "Sol 2-Door Mid-Century Armoire",
+    "category": "Bedroom",
+    "subcategory": "Wardrobes"
+  },
+  {
+    "id": "shelf-corner-bs",
+    "title": "Orbit 90° Corner Bookshelf",
+    "category": "Office",
+    "subcategory": "Bookshelves"
+  },
+  {
+    "id": "bed-osaka-king",
+    "title": "Osaka Low Master King High-Density MDF Storage Bed",
+    "category": "Bedroom",
+    "subcategory": "King Size Beds"
+  },
+  {
+    "id": "bed-solaris-king",
+    "title": "Solaris Floating Arch King Solid Teak Cot",
+    "category": "Bedroom",
+    "subcategory": "King Size Beds"
+  },
+  {
+    "id": "wardrobe-linea-wd",
+    "title": "Linea Glass-Front Wardrobe",
+    "category": "Bedroom",
+    "subcategory": "Wardrobes"
+  },
+  {
+    "id": "shelf-fluted-bs",
+    "title": "Linea Fluted Column Bookcase",
+    "category": "Office",
+    "subcategory": "Bookshelves"
+  },
+  {
+    "id": "shelf-alcove-bs",
+    "title": "Alcove 5-Tier Bookshelf",
+    "category": "Office",
+    "subcategory": "Bookshelves"
+  },
+  {
+    "id": "shelf-grid-bs",
+    "title": "Modular Grid Cube Bookcase",
+    "category": "Office",
+    "subcategory": "Bookshelves"
+  }
+]

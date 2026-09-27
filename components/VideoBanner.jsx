@@ -1,10 +1,18 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 export default function VideoBanner({ videoUrl, posterUrl }) {
   const videoRef = useRef(null);
   const [muted, setMuted] = useState(true);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Autoplay policy handled with muted
+      });
+    }
+  }, [videoUrl]);
 
   function toggleSound(e) {
     e.preventDefault();

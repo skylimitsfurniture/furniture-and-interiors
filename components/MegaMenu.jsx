@@ -146,8 +146,12 @@ export default function MegaMenu() {
   return (
     <header className="relative z-50 bg-paper border-b border-cloud font-body text-ink">
       {/* Top Notification Banner */}
-      <div className="bg-timber text-paper text-xs py-2 text-center font-medium tracking-wide">
-        Extra 10% off on orders above ₹25,000 | Use Code: <span className="underline font-bold">SKYLIMITS10</span>
+      <div className="bg-timber text-paper text-xs py-2 px-4 text-center font-medium tracking-wide flex flex-wrap items-center justify-center gap-2 sm:gap-4">
+        <span>📍 Visakhapatnam Showroom: Near Railway New Colony</span>
+        <span className="hidden sm:inline">•</span>
+        <span>100% Termite-Proof BWP Marine Ply & Solid Teak</span>
+        <span className="hidden sm:inline">•</span>
+        <a href="tel:+919959427831" className="underline font-bold hover:text-amber-200">Call: +91 99594 27831</a>
       </div>
 
       {/* Main Bar */}
@@ -312,6 +316,27 @@ export default function MegaMenu() {
 
             <div className="pt-4 border-t border-cloud/60 space-y-2">
               <Link
+                href="/services"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block py-2 text-sm font-semibold text-timber hover:underline"
+              >
+                Custom Interiors & Kitchens →
+              </Link>
+              <Link
+                href="/materials"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block py-2 text-sm font-semibold text-timber hover:underline"
+              >
+                Material & Wood Guide →
+              </Link>
+              <Link
+                href="/estimator"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block py-2 text-sm font-semibold text-emerald-700 hover:underline"
+              >
+                Cost Estimator Tool 📐 →
+              </Link>
+              <Link
                 href="/products"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block py-2 text-sm font-semibold text-timber hover:underline"
@@ -339,24 +364,47 @@ export default function MegaMenu() {
 
       {/* Categories Bar */}
       <nav className="hidden md:block border-t border-cloud/60 bg-paper">
-        <div className="max-w-[1180px] mx-auto px-4 flex space-x-8">
-          {categories.map((cat) => (
-            <div
-              key={cat.slug}
-              onMouseEnter={() => setActiveCategory(cat.slug)}
-              className="py-3"
-            >
-              <button
-                className={`text-sm font-medium transition-colors ${
-                  activeCategory === cat.slug
-                    ? "text-timber font-semibold border-b-2 border-timber pb-[10px]"
-                    : "text-ink hover:text-timber"
-                }`}
+        <div className="max-w-[1180px] mx-auto px-4 flex items-center justify-between">
+          <div className="flex space-x-8">
+            {categories.map((cat) => (
+              <div
+                key={cat.slug}
+                onMouseEnter={() => setActiveCategory(cat.slug)}
+                className="py-3"
               >
-                {cat.name}
-              </button>
-            </div>
-          ))}
+                <button
+                  className={`text-sm font-medium transition-colors ${
+                    activeCategory === cat.slug
+                      ? "text-timber font-semibold border-b-2 border-timber pb-[10px]"
+                      : "text-ink hover:text-timber"
+                  }`}
+                >
+                  {cat.name}
+                </button>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-center space-x-6 py-2">
+            <Link
+              href="/services"
+              className="text-xs font-bold text-ink hover:text-timber transition-colors uppercase tracking-wider"
+            >
+              Custom Interiors
+            </Link>
+            <Link
+              href="/materials"
+              className="text-xs font-bold text-ink hover:text-timber transition-colors uppercase tracking-wider"
+            >
+              Wood & Ply Guide
+            </Link>
+            <Link
+              href="/estimator"
+              className="text-xs font-bold text-emerald-800 bg-emerald-100/70 hover:bg-emerald-200/80 px-2.5 py-1 rounded-full transition-colors uppercase tracking-wider"
+            >
+              Cost Estimator 📐
+            </Link>
+          </div>
         </div>
       </nav>
 

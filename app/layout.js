@@ -5,6 +5,7 @@ import RightSidebar from "@/components/RightSidebar";
 import AIChatbot from "@/components/AIChatbot";
 import AuthModal from "@/components/AuthModal";
 import PricingModal from "@/components/PricingModal";
+import FloatingContactActions from "@/components/FloatingContactActions";
 import { AuthProvider } from "@/context/AuthContext";
 
 const fraunces = Fraunces({
@@ -21,19 +22,21 @@ const workSans = Work_Sans({
 });
 
 export const metadata = {
-  title: "Skylimits Furniture",
-  description: "Furniture built to raise the ceiling on everyday living.",
+  title: "Sky Limits Furniture | Custom Furniture & Coastal Interiors Visakhapatnam",
+  description:
+    "Custom manufacturing of solid teak wood furniture and 100% waterproof BWP Marine Ply modular kitchens in Visakhapatnam (near Railway New Colony / Santhipuram). Termite-proof & coastal weather durable.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${workSans.variable}`}>
-      <body className="font-body antialiased bg-paper text-ink">
+    <html lang="en" className={`${fraunces.variable} ${workSans.variable}`} suppressHydrationWarning>
+      <body className="font-body antialiased bg-paper text-ink" suppressHydrationWarning>
         <AuthProvider>
           <MegaMenu />
           {children}
           <Footer />
           <RightSidebar />
+          <FloatingContactActions />
           <AIChatbot />
           <AuthModal />
           <PricingModal />
@@ -45,109 +48,87 @@ export default function RootLayout({ children }) {
 
 function Footer() {
   return (
-    <footer className="mt-12 bg-ink text-paper border-t border-cloud/10">
-      {/* Compact Main Footer */}
-      <div className="max-w-[1240px] mx-auto px-4 md:px-8 py-10 grid gap-8 grid-cols-2 md:grid-cols-5 text-sm">
+    <footer className="mt-12 bg-ink text-paper border-t border-cloud/10 pb-16 sm:pb-0">
+      {/* Main Footer */}
+      <div className="max-w-[1240px] mx-auto px-4 md:px-8 py-12 grid gap-8 grid-cols-2 md:grid-cols-5 text-sm">
         {/* Brand & Mission Column */}
-        <div className="col-span-2">
+        <div className="col-span-2 space-y-3">
           <p className="font-display text-xl font-bold tracking-tight text-paper">
             SKY LIMITS <span className="text-brass">FURNITURE</span>
           </p>
-          <p className="text-paper/60 text-xs mt-2 max-w-sm leading-relaxed">
-            Handcrafted solid timber furnishings finished in Visakhapatnam. Designed for spaces with more air and light.
+          <p className="text-paper/70 text-xs max-w-sm leading-relaxed">
+            Custom manufactured solid teakwood (టేకు) & IS:710 BWP marine plywood furnishings built in Visakhapatnam. Engineered to withstand coastal humidity, sea salt air, and termites.
           </p>
-          {/* Quick Newsletter */}
-          <div className="mt-4">
-            <p className="text-[11px] font-semibold text-paper/70 uppercase tracking-wider mb-2">
-              Join Our Artisan Dispatch
+          <div className="text-xs text-paper/80 space-y-1 pt-1">
+            <p className="font-semibold text-brass">📍 Visakhapatnam Showroom & Workshop:</p>
+            <p className="text-paper/60 text-[11px]">
+              Near Railway New Colony / Santhipuram, Visakhapatnam, Andhra Pradesh 530016
             </p>
-            <form
-              action="#"
-              className="flex items-center gap-2 max-w-xs"
-            >
-              <input
-                type="email"
-                placeholder="Enter email..."
-                className="w-full px-3 py-1.5 rounded-lg bg-paper/10 border border-paper/15 text-xs text-paper placeholder-paper/40 focus:outline-none focus:border-brass"
-              />
-              <button
-                type="submit"
-                className="px-3 py-1.5 rounded-lg bg-timber hover:bg-timberdark text-paper text-xs font-semibold shrink-0 transition-colors"
-              >
-                Join
-              </button>
-            </form>
+            <p className="text-paper/60 text-[11px]">
+              Direct Helpline: <a href="tel:+919959427831" className="text-brass hover:underline">+91 99594 27831</a>
+            </p>
           </div>
-
         </div>
 
-        {/* Column 1: Shop */}
+        {/* Column 1: Custom Services */}
         <div>
           <p className="text-xs font-bold uppercase tracking-wider text-paper/45 mb-2.5">
-            Collections
+            Custom Interiors
           </p>
           <ul className="space-y-1.5 text-xs text-paper/75">
-            <li><a href="/products?category=Living%20Room" className="hover:text-brass transition-colors">Living Room</a></li>
-            <li><a href="/products?category=Bedroom" className="hover:text-brass transition-colors">Bedroom</a></li>
-            <li><a href="/products?category=Dining%20Room" className="hover:text-brass transition-colors">Dining Room</a></li>
-            <li><a href="/products?category=Office" className="hover:text-brass transition-colors">Home Office</a></li>
-            <li><a href="/products" className="hover:text-brass transition-colors">All 140+ Items</a></li>
+            <li><a href="/services#modular-kitchen" className="hover:text-brass transition-colors">Modular Kitchens (IS:710)</a></li>
+            <li><a href="/services#living-room" className="hover:text-brass transition-colors">Solid Teak Living Suites</a></li>
+            <li><a href="/services#bedroom-wardrobes" className="hover:text-brass transition-colors">BWR Wardrobes & Cots</a></li>
+            <li><a href="/services#dining-furniture" className="hover:text-brass transition-colors">6 & 8-Seater Dining Sets</a></li>
+            <li><a href="/estimator" className="hover:text-brass transition-colors font-semibold text-brass">Interior Cost Estimator 📐</a></li>
           </ul>
         </div>
 
-        {/* Column 2: Highlights */}
+        {/* Column 2: Material Education */}
         <div>
           <p className="text-xs font-bold uppercase tracking-wider text-paper/45 mb-2.5">
-            Opportunities
+            Material Transparency
           </p>
           <ul className="space-y-1.5 text-xs text-paper/75">
-            <li><a href="/franchise" className="hover:text-brass transition-colors">Franchise Program</a></li>
-            <li><a href="/pricing" className="hover:text-brass transition-colors">1K Club VIP Rewards</a></li>
-            <li><a href="/events" className="hover:text-brass transition-colors">Workshop Events</a></li>
-            <li><a href="/#video-showcase" className="hover:text-brass transition-colors">Brand Cinema</a></li>
-            <li><a href="/custom" className="hover:text-brass transition-colors">Bespoke Orders</a></li>
+            <li><a href="/materials" className="hover:text-brass transition-colors">Why Wood Choice Matters</a></li>
+            <li><a href="/materials" className="hover:text-brass transition-colors">Solid Teak vs Marine Ply</a></li>
+            <li><a href="/materials" className="hover:text-brass transition-colors">Coastal Weather Defense</a></li>
+            <li><a href="/products" className="hover:text-brass transition-colors">140+ Catalog Items</a></li>
+            <li><a href="/#video-showcase" className="hover:text-brass transition-colors">Workshop Video Showcase</a></li>
           </ul>
         </div>
 
-        {/* Column 3: Care & Connect */}
+        {/* Column 3: Vizag Locations Served */}
         <div>
           <p className="text-xs font-bold uppercase tracking-wider text-paper/45 mb-2.5">
-            Connect
+            Areas We Serve in Vizag
           </p>
-          <p className="text-xs text-paper/70">
-            Vizag Studio: +91 99594 27831
-          </p>
-          <p className="text-xs text-paper/50 mt-0.5">
-            care@skylimitsfurniture.in
+          <p className="text-[11px] text-paper/65 leading-relaxed">
+            Madhurawada, MVP Colony, Gajuwaka, Yendada, Waltair Uplands, Rushikonda, Seethammadhara, Dwaraka Nagar, Steel Plant Township.
           </p>
 
-          {/* Social Icons */}
-          <div className="flex items-center gap-2.5 mt-3">
-            {[
-              { name: "Instagram", icon: "📸" },
-              { name: "Pinterest", icon: "📌" },
-              { name: "YouTube", icon: "▶️" },
-              { name: "LinkedIn", icon: "💼" },
-            ].map((s) => (
-              <span
-                key={s.name}
-                className="w-7 h-7 rounded-full bg-paper/10 hover:bg-paper/20 flex items-center justify-center text-xs cursor-pointer transition-colors"
-                title={s.name}
-              >
-                {s.icon}
-              </span>
-            ))}
+          {/* WhatsApp Action Button */}
+          <div className="mt-4">
+            <a
+              href="https://wa.me/919959427831?text=Hi%20Sky%20Limits%2C%20I%20want%20to%20discuss%20custom%20furniture%2Finteriors%20for%20my%20home%20in%20Vizag."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-paper text-xs font-semibold shadow-sm transition-colors"
+            >
+              <span>💬</span>
+              <span>WhatsApp Showroom</span>
+            </a>
           </div>
         </div>
       </div>
 
-      {/* Ultra-compact bottom copyright bar */}
-      <div className="border-t border-paper/10 max-w-[1240px] mx-auto px-4 md:px-8 py-3.5 flex flex-col sm:flex-row items-center justify-between text-[11px] text-paper/40 gap-2">
-        <p>© {new Date().getFullYear()} Skylimits Furniture. Solid timber joinery. All rights reserved.</p>
+      {/* Bottom copyright bar */}
+      <div className="border-t border-paper/10 max-w-[1240px] mx-auto px-4 md:px-8 py-4 flex flex-col sm:flex-row items-center justify-between text-[11px] text-paper/40 gap-2">
+        <p>© {new Date().getFullYear()} Sky Limits Furniture (Visakhapatnam). 100% Termite-Proof BWP Plywood & Seasoned Teakwood. All rights reserved.</p>
         <div className="flex items-center gap-4">
-          <a href="/privacy" className="hover:text-paper/70 transition-colors">Privacy Policy</a>
+          <a href="/materials" className="hover:text-paper/70 transition-colors">Material Standards</a>
           <span>•</span>
-          <a href="/terms" className="hover:text-paper/70 transition-colors">Terms of Service</a>
+          <a href="/estimator" className="hover:text-paper/70 transition-colors">Cost Estimator</a>
           <span>•</span>
           <a href="/warranty" className="hover:text-paper/70 transition-colors">10-Year Warranty</a>
         </div>

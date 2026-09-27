@@ -42,10 +42,16 @@ export default function ProductCard({ product, onQuickView }) {
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
         />
 
-        {/* Subcategory Pill */}
-        <div className="absolute top-3 left-3 flex flex-col gap-1 z-10">
-          <span className="bg-paper/90 backdrop-blur-md text-ink text-[11px] font-medium px-2.5 py-1 rounded-full shadow-sm">
+        {/* Subcategory & Regional Delivery Pills */}
+        <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
+          <span className="bg-paper/90 backdrop-blur-md text-ink text-[11px] font-medium px-2.5 py-1 rounded-full shadow-sm w-fit">
             {product.subcategory}
+          </span>
+          <span className="bg-emerald-600/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-xs tracking-wide flex items-center gap-1 w-fit">
+            <span>⚡</span> Vizag Express
+          </span>
+          <span className="bg-ink/80 text-white text-[9px] font-medium px-2 py-0.5 rounded-full shadow-xs tracking-tight w-fit">
+            AP & Telangana
           </span>
         </div>
 

@@ -147,7 +147,7 @@ export default function VideoShowcase({
                 Built to Outlast the Lease
               </h3>
               <p className="text-xs md:text-sm text-white/80 mt-1 line-clamp-2">
-                Watch how natural timber logs are cut, sanded, hand-finished with organic oils, and turned into architectural home sanctuaries.
+                Watch how natural teakwood and precision MDF wood are cut, sanded, hand-finished with organic oils, and turned into architectural home sanctuaries.
               </p>
               <div className="mt-4 flex flex-wrap items-center gap-3">
                 <Link

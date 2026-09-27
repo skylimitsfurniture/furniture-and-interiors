@@ -1,6 +1,100 @@
 import { products, formatINR, searchProducts } from "@/lib/products";
 import { furnitureData } from "@/data/furnitureData";
 
+// Package definition for ₹2,50,000 2 BHK Interior Package
+const PACKAGE_2_5_LAKH = {
+  price: "₹2,50,000",
+  title: "Sky Limits 2 BHK Essential Interior Package",
+  items: [
+    {
+      name: "Bedroom Cupboard / Wardrobe",
+      material: "Waterproof Gurjan Marine Plywood (BWP IS:710)",
+      finish: "1 mm Sunmica / Laminate Finish",
+      zone: "High Moisture / Heavy Daily Use",
+      backing: "8 mm Heavy-Duty Substrate Backing Board",
+    },
+    {
+      name: "Kitchen Units (Single Wall - Stove Side)",
+      material: "Waterproof Gurjan Marine Plywood (BWP IS:710) - Top & Bottom Cabinets",
+      finish: "1 mm High-Gloss / Matte Sunmica Laminate",
+      zone: "Wet Cooking & Moisture Zone",
+      backing: "8 mm Marine Grade Carcass Panel",
+    },
+    {
+      name: "TV Unit",
+      material: "Engineered Wood / MDF / HDF",
+      finish: "PVC / Textured Laminate Finish",
+      zone: "Dry Living Area",
+      backing: "Sturdy Rear Anchor Panel",
+    },
+    {
+      name: "Crockery Unit",
+      material: "Engineered Wood / MDF / HDF",
+      finish: "Laminate / Glass Profile Finish",
+      zone: "Dry Dining Area",
+      backing: "Balanced Backing Substrate",
+    },
+    {
+      name: "Dressing Table",
+      material: "Engineered Wood / MDF / HDF with Mirror Frame",
+      finish: "Sunmica / PU Edging Finish",
+      zone: "Bedroom Dry Zone",
+      backing: "Concealed Wall Cleat",
+    },
+    {
+      name: "Shoe Rack",
+      material: "Engineered Wood / MDF / HDF with Louvered/Ventilated Shutters",
+      finish: "Durable PVC / Sunmica Finish",
+      zone: "Foyer / Entryway",
+      backing: "Rigid Structural Frame",
+    },
+  ],
+  specs: [
+    "Core Plywood: Waterproof Gurjan Marine Plywood (BWP 710 Grade) for Kitchen & Wardrobe.",
+    "Laminate / Sunmica: 1 mm thick decorative laminates (Sunmica) with termite-resistant PVC edge-banding.",
+    "Substrate Panel: 8 mm backing ply/board for carcass structural rigidity and longevity.",
+    "Hardware & Fittings: 100% Stainless Steel (SS 304 Grade) handles & premium bonus/mortise locks.",
+  ],
+  guardrails: [
+    "Standard package is engineered up to standard room dimensions (sq. ft caps apply).",
+    "Final execution depends on site laser measurement.",
+    "Upgrades to Gurjan Plywood for dry-zone units (TV unit, Crockery, etc.) are available at direct raw material difference.",
+  ],
+};
+
+function generatePackageExplanation(query = "") {
+  const isUpgradingQuery = /upgrade|tv unit gurjan|all gurjan|full plywood|change material/i.test(query);
+
+  if (isUpgradingQuery) {
+    return (
+      `### Customization & Upgrades on the ₹2,50,000 2 BHK Package\n\n` +
+      `Yes, you can upgrade dry-zone units (such as the TV unit, Crockery unit, Dressing table, or Shoe rack) to **Waterproof Gurjan Marine Plywood (BWP IS:710)**.\n\n` +
+      `**Important Cost Consideration:**\n` +
+      `The ₹2,50,000 package is specifically calibrated to offer aggressive factory pricing by reserving premium Gurjan BWP ply for wet/moisture-prone zones (Kitchen & Wardrobe) and high-density engineered wood for dry decorative pieces. Upgrading the remaining 4 units to Gurjan Plywood will increase the raw material and fabrication cost beyond the ₹2.5 Lakhs base offer.\n\n` +
+      `Would you like us to calculate the exact material price difference based on your flat's floor plan?`
+    );
+  }
+
+  return (
+    `### Sky Limits 2 BHK Interior Package — ₹2,50,000 (Complete 6-Item Scope)\n\n` +
+    `Yes, **₹2,50,000 is an aggressive, highly competitive package price** offered directly from our Visakhapatnam workshop. We achieve this budget without sacrificing structural integrity through strategic material allocation:\n\n` +
+    `#### Itemized Scope & Material Allocation:\n` +
+    `1. **Bedroom Wardrobe / Cupboard** — **Waterproof Gurjan Plywood (BWP IS:710)** with 1 mm Sunmica laminate.\n` +
+    `2. **Kitchen Units (Stove-Side Wall)** — **Waterproof Gurjan Plywood (BWP IS:710)** for both top & bottom cabinets.\n` +
+    `3. **Living Room TV Unit** — **Engineered Wood / MDF / HDF** with durable PVC/laminate finish.\n` +
+    `4. **Dining Crockery Unit** — **Engineered Wood / MDF / HDF** with designer laminate.\n` +
+    `5. **Bedroom Dressing Table** — **Engineered Wood / MDF / HDF** with mirror console & drawers.\n` +
+    `6. **Foyer Shoe Rack** — **Engineered Wood / MDF / HDF** with ventilated storage shutters.\n\n` +
+    `#### Technical Specifications & Standard Hardware:\n` +
+    `• **Core Plywood:** 100% Waterproof Gurjan Marine Plywood (BWP 710 Grade) in all wet/moisture zones.\n` +
+    `• **Laminate Standard:** 1 mm thick decorative Sunmica (Note: "8 mm" refers to the heavy-duty structural backing/carcass ply board, while decorative laminates are 1 mm).\n` +
+    `• **Fittings & Hardware:** Rust-proof Stainless Steel (SS 304) handles & premium bonus/mortise locks.\n` +
+    `• **Termite Protection:** Factory pressure-treated and sealed against coastal humidity.\n\n` +
+    `*Note: Standard package covers up to standard room square footage caps. Final execution is verified during site laser measurement.*\n\n` +
+    `**Next Step:** Would you like to share your 2 BHK floor plan or schedule a free site laser measurement with our Visakhapatnam team?`
+  );
+}
+
 const FAQ = [
   {
     keywords: ["shipping", "delivery", "deliver", "pan-india", "charges", "courier"],
@@ -13,9 +107,9 @@ const FAQ = [
       "Every Skylimits piece comes with our 7-day hassle-free return guarantee. If the piece doesn't fit your space or lighting, our team will pick it up at zero return charge.",
   },
   {
-    keywords: ["material", "wood", "timber", "quality", "made", "craftsmanship", "artisan"],
+    keywords: ["material", "wood", "timber", "quality", "made", "craftsmanship", "artisan", "plywood", "termite", "marine", "gurjan"],
     answer:
-      "All Skylimits furniture is hand-joined from kiln-dried solid Indian hardwoods (Teak, Sheesham, Oak, Smoked Beech) and finished with low-VOC organic oils by master carpenters in Visakhapatnam. Never flat-pack particle board.",
+      "All Sky Limits furniture and interiors are custom manufactured in Visakhapatnam using 100% seasoned Solid Teak Wood (Burma & C.P. Teak) and IS:710 BWP (Boiling Water Proof) Gurjan Marine Plywood. We strictly avoid cheap particle board and never use MDF in high-moisture kitchen zones.",
   },
   {
     keywords: ["discount", "coupon", "code", "offer", "sale", "promo"],
@@ -28,6 +122,16 @@ const FAQ = [
       "Skylimits VIP Pro gives you unlimited AI interior styling sessions, early access to interactive 3D AR furniture models, an exclusive 15% discount code, and direct consultation with our interior architects.",
   },
 ];
+
+// Helper to check 2.5 lakh package inquiries
+function isPackageQuery(text) {
+  return (
+    /2\.5\s*(?:lakh|lakhs|lac|lacs|l)|250000|2,50,000|250k|2\s*bhk\s*package|package for 2\s*bhk|6\s*item|six\s*item/i.test(text) ||
+    (/2\s*bhk/i.test(text) && /cost|price|package|budget|estimate|quote|items/i.test(text)) ||
+    (/gurjan/i.test(text) && /package|kitchen|wardrobe|2\s*bhk/i.test(text)) ||
+    (/8\s*mm\s*sunmica/i.test(text))
+  );
+}
 
 // Helper to parse price/budget limit from query
 function extractBudget(text) {
@@ -55,12 +159,21 @@ export async function POST(req) {
 
     if (!cleanText) {
       return Response.json({
-        reply: "Hello! I am your Skylimits Interior Stylist. You can ask me to search our catalog, check dimensions of any piece, or suggest styling combinations for your space.",
+        reply: "Hello! I am Sky Limits AI, your senior interior consultant. How can I assist you with our 2 BHK interior packages, custom woodwork, or material specifications today?",
         products: [],
       });
     }
 
-    // 1. Check for standard FAQ match
+    // 1. Check for 2.5 Lakh 2 BHK Package Inquiries (Priority System Role)
+    if (isPackageQuery(cleanText)) {
+      const packageReply = generatePackageExplanation(cleanText);
+      return Response.json({
+        reply: packageReply,
+        products: [],
+      });
+    }
+
+    // 2. Check for standard FAQ match
     const faqHit = FAQ.find((f) => f.keywords.some((k) => cleanText.includes(k)));
     if (faqHit && !isDimensionQuery(cleanText) && !cleanText.includes("sofa") && !cleanText.includes("bed") && !cleanText.includes("chair")) {
       return Response.json({
@@ -69,9 +182,8 @@ export async function POST(req) {
       });
     }
 
-    // 2. Check for Specific Dimension Inquiry
+    // 3. Check for Specific Dimension Inquiry
     if (isDimensionQuery(cleanText)) {
-      // Score candidates to find the most relevant product mentioned
       const words = cleanText
         .replace(/dimension|dimensions|size|height|width|depth|measure|how big|how tall|how wide|fit in/gi, "")
         .trim()
@@ -105,9 +217,8 @@ export async function POST(req) {
       }
     }
 
-    // 3. Check for Interior Styling & Pairing Advice
+    // 4. Check for Interior Styling & Pairing Advice
     if (isStylingQuery(cleanText)) {
-      // Check if a specific product or room is mentioned
       let stylingMatches = searchProducts(cleanText);
       if (stylingMatches.length === 0) {
         stylingMatches = furnitureData.slice(0, 3);
@@ -122,7 +233,7 @@ export async function POST(req) {
       });
     }
 
-    // 4. Product Search & Budget Filtering
+    // 5. Product Search & Budget Filtering
     let matchedProducts = searchProducts(cleanText);
     const budget = extractBudget(cleanText);
 
@@ -140,16 +251,15 @@ export async function POST(req) {
       });
     }
 
-    // 5. Friendly Fallback
+    // 6. Friendly Fallback
     return Response.json({
       reply:
-        "I couldn't find an exact item matching that description. Try asking about:\n" +
-        "• Specific rooms (e.g., *'3-seater sofas for living room'* or *'minimalist platform bed'*)\n" +
-        "• Dimensions (e.g., *'What are the dimensions of the Solis curved sofa?'*)\n" +
-        "• Budget search (e.g., *'solid wood dining tables under ₹35,000'*)\n" +
-        "• Styling advice (e.g., *'how to style oak coffee tables'*)\n" +
-        "• Policies (e.g., *'free delivery and return policy'*)\n\n" +
-        "Feel free to ask!",
+        "I can assist you with:\n" +
+        "• **2 BHK Interior Package (₹2,50,000)**: Complete 6-item scope with Waterproof Gurjan Ply & Sunmica.\n" +
+        "• **Material Specifications**: Gurjan BWP 710 vs. BWR Ply vs. Teak Wood.\n" +
+        "• **Custom Furniture**: Solid wood dining, sofas, and platform beds.\n" +
+        "• **Site Measurements & Quotes**: Booking laser visits in Visakhapatnam.\n\n" +
+        "What specific project or room can I help you plan?",
       products: furnitureData.slice(0, 2),
     });
   } catch (error) {

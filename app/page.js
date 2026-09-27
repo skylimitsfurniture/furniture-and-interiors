@@ -7,7 +7,7 @@ import VideoBanner from "@/components/VideoBanner";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Skylimits Furniture | Solid Timber & Architectural Living",
+  title: "Skylimits Furniture | Teakwood & Coastal Architectural Living",
   description:
     "Explore 140+ handcrafted furniture pieces across Living Room, Bedroom, Dining, and Office. Visakhapatnam artisan craftsmanship built to outlast the lease.",
 };
@@ -15,7 +15,7 @@ export const metadata = {
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#FBFAF7] text-[#1E2A32] overflow-x-hidden">
-      {/* 1. Hero Promo Banners (Dual Promo Highlight) */}
+      {/* 1. Hero Promo Banners (Dual Promo Highlight with Starting Video Banner) */}
       <section className="max-w-[1240px] mx-auto px-4 md:px-8 pt-6 pb-12 grid md:grid-cols-2 gap-5">
         <VideoBanner
           videoUrl={process.env.NEXT_PUBLIC_GANESH_VIDEO_URL || "/videos/ganesh-chaturthi.mp4"}
@@ -44,7 +44,7 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mt-6">
             <p className="text-[#FBFAF7]/85 text-xs md:text-sm max-w-[260px] leading-relaxed">
-              The Hollow edit just landed — handcrafted low-platform timber frames in deep ink and warm walnut.
+              The Hollow edit just landed — handcrafted low-platform teakwood and moisture-resistant wood frames in deep ink and warm walnut.
             </p>
             <span className="shrink-0 px-6 py-3 rounded-full bg-[#FBFAF7] text-[#7A2E58] text-xs md:text-sm font-bold group-hover:bg-[#EDE8DE] transition-all shadow-md group-hover:scale-105">
               Shop The Edit →
@@ -58,8 +58,8 @@ export default function Home() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 text-center">
           {[
             ["Free Shipping", "Pan-India delivery on all orders", "🚚"],
-            ["1,200+ Homes", "Furnished with lasting care", "🏡"],
-            ["Solid Timber", "No flat-pack shortcuts or veneers", "🪵"],
+            ["1,200+ Homes", "Furnished with lasting care in Vizag", "🏡"],
+            ["Solid Timber", "No flat-pack shortcuts or low-grade ply", "🪵"],
             ["10-Year Warranty", "Joinery integrity guaranteed", "🛡️"],
           ].map(([title, sub, icon]) => (
             <div
@@ -110,8 +110,8 @@ export default function Home() {
               </div>
               <div className="h-8 w-[1px] bg-[#EDE8DE]" />
               <div>
-                <p className="font-display text-2xl font-bold text-[#8B5E3C]">FSC Teak</p>
-                <p className="text-xs text-[#1E2A32]/60">Sustainably Harvested</p>
+                <p className="font-display text-2xl font-bold text-[#8B5E3C]">IS:710</p>
+                <p className="text-xs text-[#1E2A32]/60">BWP Marine Grade</p>
               </div>
               <div className="h-8 w-[1px] bg-[#EDE8DE]" />
               <div>

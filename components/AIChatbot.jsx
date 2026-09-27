@@ -22,7 +22,7 @@ export default function AIChatbot() {
     {
       role: "assistant",
       content:
-        "Hello! I'm your Skylimits AI Interior Stylist. Ask me anything about our furniture dimensions, wood craftsmanship, room styling advice, or shipping policies.",
+        "Hello! I am Sky Limits AI, your senior interior consultant. You can ask me to evaluate our ₹2,50,000 (2 BHK) interior package, explain material choices like Waterproof Gurjan Marine Ply vs Engineered Wood, check dimensions, or plan your home woodwork.",
       products: [],
     },
   ]);
@@ -42,10 +42,10 @@ export default function AIChatbot() {
   if (!isChatOpen) return null;
 
   const quickPrompts = [
-    "What are the dimensions of Solis sofa?",
-    "Suggest living room furniture pairing",
-    "Solid timber beds under ₹40,000",
-    "How does 7-day return work?",
+    "Tell me about the ₹2,50,000 2 BHK package",
+    "Is ₹2,50,000 enough for all 6 items?",
+    "Why Gurjan Ply for kitchen and wardrobe?",
+    "What is the 8 mm Sunmica specification?",
   ];
 
   const handleSend = async (queryText) => {
@@ -149,16 +149,14 @@ export default function AIChatbot() {
         {messages.map((msg, idx) => (
           <div
             key={idx}
-            className={`flex flex-col ${
-              msg.role === "user" ? "items-end" : "items-start"
-            }`}
+            className={`flex flex-col ${msg.role === "user" ? "items-end" : "items-start"
+              }`}
           >
             <div
-              className={`max-w-[85%] p-3.5 rounded-2xl leading-relaxed whitespace-pre-line shadow-sm ${
-                msg.role === "user"
+              className={`max-w-[85%] p-3.5 rounded-2xl leading-relaxed whitespace-pre-line shadow-sm ${msg.role === "user"
                   ? "bg-timber text-paper rounded-br-none"
                   : "bg-paper text-ink border border-cloud rounded-bl-none"
-              }`}
+                }`}
             >
               {msg.content}
             </div>

@@ -146,33 +146,54 @@ export default async function ProductDetailPage({ params }) {
               </span>
             </div>
 
-            <p className="mt-6 text-ink/75 leading-relaxed text-sm md:text-base">
+            {/* Regional Delivery Badges Banner */}
+            <div className="mt-4 p-3.5 bg-emerald-50/70 border border-emerald-200/80 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+              <div className="flex items-center gap-2">
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-emerald-600 text-white text-xs font-bold shrink-0">
+                  ⚡
+                </span>
+                <div>
+                  <p className="text-xs font-bold text-emerald-950">
+                    Available for Express Delivery in Vizag
+                  </p>
+                  <p className="text-[11px] text-emerald-800">
+                    Direct local dispatch within 24–48 Hours
+                  </p>
+                </div>
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/90 border border-emerald-200 text-[11px] font-semibold text-emerald-900 shadow-xs">
+                <span>🚚</span>
+                <span>Delivering across AP & Telangana</span>
+              </div>
+            </div>
+
+            <p className="mt-5 text-ink/75 leading-relaxed text-sm md:text-base">
               {product.description}
             </p>
 
             {/* Specifications Card */}
-            <div className="mt-8 p-5 bg-cloud/40 rounded-2xl border border-cloud space-y-3 text-xs md:text-sm">
+            <div className="mt-6 p-5 bg-cloud/40 rounded-2xl border border-cloud space-y-3 text-xs md:text-sm">
               <h3 className="font-display font-bold text-ink text-sm uppercase tracking-wide">
-                Craftsmanship & Dimensions
+                Craftsmanship & Regional Fulfillment
               </h3>
               <div className="flex justify-between py-1 border-b border-cloud/60">
                 <span className="text-ink/60">Materials:</span>
-                <span className="font-medium text-ink">{product.material}</span>
+                <span className="font-medium text-ink max-w-[65%] text-right">{product.material}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-cloud/60">
                 <span className="text-ink/60">Dimensions:</span>
                 <span className="font-medium text-ink">{product.dimensions}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-cloud/60">
-                <span className="text-ink/60">Wood Tone:</span>
-                <span className="font-medium capitalize text-ink">
-                  {product.tone}
+                <span className="text-ink/60">Regional Delivery:</span>
+                <span className="font-medium text-emerald-800 font-semibold">
+                  Express Vizag (24-48h) • AP & Telangana (3-5 days)
                 </span>
               </div>
               <div className="flex justify-between py-1">
                 <span className="text-ink/60">Assembly:</span>
                 <span className="font-medium text-ink">
-                  Expert Pan-India Installation Included
+                  Direct Visakhapatnam Workshop Carpenter Assembly
                 </span>
               </div>
             </div>
@@ -206,16 +227,16 @@ export default async function ProductDetailPage({ params }) {
             {/* Trust highlights */}
             <div className="mt-8 grid grid-cols-3 gap-2 text-center text-xs text-ink/70">
               <div className="p-3 bg-paper rounded-xl border border-cloud">
-                <p className="font-semibold text-ink">Solid Hardwood</p>
-                <p className="text-[11px] text-ink/50 mt-0.5">No Flat-Packs</p>
+                <p className="font-semibold text-ink">Vizag Workshop</p>
+                <p className="text-[11px] text-ink/50 mt-0.5">Authentic Craft</p>
               </div>
               <div className="p-3 bg-paper rounded-xl border border-cloud">
-                <p className="font-semibold text-ink">Free Delivery</p>
-                <p className="text-[11px] text-ink/50 mt-0.5">Pan-India Transit</p>
+                <p className="font-semibold text-emerald-800">AP & Telangana</p>
+                <p className="text-[11px] text-ink/50 mt-0.5">Insured Transit</p>
               </div>
               <div className="p-3 bg-paper rounded-xl border border-cloud">
-                <p className="font-semibold text-ink">7-Day Returns</p>
-                <p className="text-[11px] text-ink/50 mt-0.5">Hassle-Free</p>
+                <p className="font-semibold text-ink">Warranty & Support</p>
+                <p className="text-[11px] text-ink/50 mt-0.5">10-Year Local Care</p>
               </div>
             </div>
           </div>

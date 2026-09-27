@@ -92,12 +92,15 @@ export default function QuickViewModal({ product, onClose }) {
               {product.title}
             </h2>
 
-            <div className="flex items-baseline gap-3 mt-3">
+            <div className="flex flex-wrap items-center gap-2 mt-3">
               <p className="font-display text-2xl text-ink font-bold">
                 {formatINR(product.price)}
               </p>
-              <span className="text-xs text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full font-medium">
-                In Stock • Pan-India Free Delivery
+              <span className="text-[11px] text-emerald-800 bg-emerald-100/80 px-2.5 py-0.5 rounded-full font-bold flex items-center gap-1">
+                <span>⚡</span> Express in Vizag (24-48h)
+              </span>
+              <span className="text-[11px] text-ink/80 bg-cloud/70 px-2.5 py-0.5 rounded-full font-medium">
+                🚚 AP & Telangana
               </span>
             </div>
 
