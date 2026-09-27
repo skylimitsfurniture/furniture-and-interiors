@@ -59,7 +59,7 @@ export default function ProductCard({ product, onQuickView }) {
         <button
           type="button"
           onClick={handleDownload}
-          title="Download High-Res (Cloudinary Dynamic Attachment)"
+          title="Download High-Res Image"
           className="absolute top-3 right-3 z-20 p-2 rounded-full bg-paper/90 backdrop-blur-md text-ink/70 hover:text-timber hover:bg-paper shadow-sm transition-all hover:scale-110 active:scale-95 flex items-center justify-center"
           aria-label="Download High-Res Image"
         >

@@ -98,7 +98,7 @@ export default async function ProductDetailPage({ params }) {
             href={downloadUrl}
             download={`${product.title}-ultrahd.jpg`}
             className="absolute bottom-4 right-4 bg-paper/95 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-semibold text-ink shadow hover:bg-timber hover:text-paper transition-all flex items-center gap-1.5"
-            title="Instant High-Res Download (Cloudinary Dynamic Attachment)"
+            title="Instant High-Res Download"
           >
             <span>↓</span>
             <span>Download Ultra-HD</span>
@@ -179,10 +179,6 @@ export default async function ProductDetailPage({ params }) {
               <div className="flex justify-between py-1 border-b border-cloud/60">
                 <span className="text-ink/60">Materials:</span>
                 <span className="font-medium text-ink max-w-[65%] text-right">{product.material}</span>
-              </div>
-              <div className="flex justify-between py-1 border-b border-cloud/60">
-                <span className="text-ink/60">Dimensions:</span>
-                <span className="font-medium text-ink">{product.dimensions}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-cloud/60">
                 <span className="text-ink/60">Regional Delivery:</span>

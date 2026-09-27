@@ -255,7 +255,7 @@ export default function PricingModal() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-emerald-600 font-bold">✓</span>
-                  <span>100% Free High-Res Image Downloads (Cloudinary)</span>
+                  <span>100% Free High-Res Image Downloads</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-emerald-600 font-bold">✓</span>
